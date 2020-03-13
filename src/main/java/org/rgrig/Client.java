@@ -145,7 +145,7 @@ class Client extends WebSocketClient {
                     if (repoName.contains("tiny") && next > 0) {
                         if (!"Good".equals(message.get("Answer"))) {
                             System.out.println("adding bad commit");
-                            problems.get(problems.size() - 1).bads.add(commits[next - 1]);
+                            problems.get(problems.size() - 1).bads.add(commits[next]);
                         }
                     }
                     good.put(commits[next++], "Good".equals(message.get("Answer")));
@@ -158,7 +158,7 @@ class Client extends WebSocketClient {
                             if (!good.get(commit) && allParentsGood) {
                                 state = State.START;
                                 if (repoName.contains("tiny")) {
-                                    problems.get(problems.size() - 1).solution = commit;
+                                    problems.get(problems.size()-1).solution = commit;
                                     System.out.println(String.format("solution: %s", commit));
                                 }
 
